@@ -20,7 +20,7 @@ services:
   # ====================================================================================================================
   pgadmin-docker:
     image: dpage/pgadmin4
-    container_name: dev-pgadmin
+    container_name: dev-pgadminjunkdealer
     environment:
       PGADMIN_DEFAULT_EMAIL: me@example.com
       PGADMIN_DEFAULT_PASSWORD: 1234567
