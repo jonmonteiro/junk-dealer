@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
-import junkedealer.junkedealer.DTO.AuthData;
 import junkedealer.junkedealer.DTO.JwtTokenData;
+import junkedealer.junkedealer.DTO.Login.AuthData;
 import junkedealer.junkedealer.entities.Users;
 import junkedealer.junkedealer.services.TokenService;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,7 +26,7 @@ public class SecurityController {
 
     @PostMapping
     public ResponseEntity login(@RequestBody @Valid AuthData data) {
-		var authToken = new UsernamePasswordAuthenticationToken(data.login(), data.senha());
+		var authToken = new UsernamePasswordAuthenticationToken(data.login(), data.password());
 		var auth = authManager.authenticate(authToken);
 		var JwtToken = tokenService.generateToken((Users) auth.getPrincipal());
 		return ResponseEntity.ok(new JwtTokenData(JwtToken));			
