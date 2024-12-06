@@ -5,12 +5,12 @@ services:
   # ====================================================================================================================
   pg-docker:
     image: postgres:14-alpine
-    container_name: dev-junkdealer
+    container_name: dev-dealer
     environment:
       POSTGRES_DB: mydatabase
       POSTGRES_PASSWORD: 1234567
     ports:
-      - 5433:5432
+      - 5432:5432
     volumes:
       - ./.data/postgresql/data:/var/lib/postgresql/data
     networks:
@@ -20,7 +20,7 @@ services:
   # ====================================================================================================================
   pgadmin-docker:
     image: dpage/pgadmin4
-    container_name: dev-pgadminjunkdealer
+    container_name: dev-pgadmindealer
     environment:
       PGADMIN_DEFAULT_EMAIL: me@example.com
       PGADMIN_DEFAULT_PASSWORD: 1234567
