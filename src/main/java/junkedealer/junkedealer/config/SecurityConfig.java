@@ -22,7 +22,7 @@ public class SecurityConfig {
     @Autowired
     SecurityFilter securityFilter;
 
-        @Bean
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
   
     return http
