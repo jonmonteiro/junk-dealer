@@ -7,9 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
-import jakarta.validation.Valid;
-import junkedealer.junkedealer.DTO.Users.GetUsersDTO;
 import junkedealer.junkedealer.DTO.Users.PostUsersDTO;
 import junkedealer.junkedealer.services.UserService;
 
@@ -22,9 +19,8 @@ public class UsersController {
 
 
     @PostMapping
-    public ResponseEntity createUser(@RequestBody @Valid PostUsersDTO user, UriComponentsBuilder uriBuilder) {
-        GetUsersDTO savedUser = userService.createUser(user);
-        var uri = uriBuilder.path("/users/{id}").buildAndExpand(savedUser.id()).toUri();
-        return ResponseEntity.created(uri).body(savedUser);
+    public ResponseEntity<PostUsersDTO> createUser(@RequestBody PostUsersDTO user) {
+        PostUsersDTO saveUser = userService.createUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saveUser);
     }
 }

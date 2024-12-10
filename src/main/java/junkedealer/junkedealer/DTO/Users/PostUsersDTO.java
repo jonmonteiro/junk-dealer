@@ -1,20 +1,20 @@
 package junkedealer.junkedealer.DTO.Users;
 
-import java.util.Set;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import junkedealer.junkedealer.entities.Users;
 
 public record PostUsersDTO(
     @NotNull
     String name,
     @NotNull
-    String login,
     @Email
     String email,
     @NotNull
-    String password,
-    @NotNull
-    Set<Long> idsProfile
+    String password
 ) {
 
+     public PostUsersDTO(Users data) {
+        this(data.getName(), data.getEmail(), data.getPassword());
+    }
 }
